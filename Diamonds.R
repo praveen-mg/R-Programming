@@ -42,6 +42,26 @@ ggplot(aes(x = color,y=price/carat),data = diamonds)+
   geom_boxplot(aes(fill = color))+
   coord_cartesian(ylim= c(0,8500))
 
+
+ggplot(aes(x = carat), data = diamonds) + 
+  geom_freqpoly(binwidth=.2) + 
+  scale_x_continuous(limits = c(2, 5), breaks =  seq(2, 5, .1))
+
   
-  
+table(diamonds$carat)
+
+
+library("xlsx")
+
+#employment <- read.xlsx('indicator_t_above_15_employ.xlsx',1)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+#employment$country <- row.names(employment)
+#name_gather <- gather(employment,year, value, -Row.Labels)
+tbl_df(employment)
+
+employment <- read.csv('indicator_t_above_15_employ.csv',sep = ";",header=TRUE)
+
+
   
