@@ -113,4 +113,4 @@ pf_subset <- pf[,c(2:15)]
 
 names(pf_subset)
 
-ggpairs(pf_subset[sample.int(nrows(pf_subset),1000),])
+ggpairs(pf_subset[sample.int(nrow(pf_subset),1000),])
