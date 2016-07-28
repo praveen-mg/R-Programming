@@ -58,6 +58,59 @@ summary(pf_more_one_day$rate)
 
 with(subset(pf,tenure >= 1),summary(friend_count/tenure))
 
-ggplot(aes(x= age ,y = friendships_initiated/tenure),data = subset(pf,tenure>1))+
+ggplot(aes(x= (tenure) ,y = friendships_initiated/tenure),data = subset(pf,tenure>=1))+
   geom_line(aes(color= year_joined.bucket),stat = 'summary',fun.y = mean)+
   geom_line(stat = 'summary',fun.y = mean,linetype = 2)
+
+
+ggplot(aes(x= 90*round(tenure/90) ,y = friendships_initiated/tenure),data = subset(pf,tenure>=1))+
+  geom_line(aes(color= year_joined.bucket),stat = 'summary',fun.y = mean)+
+  geom_line(stat = 'summary',fun.y = mean,linetype = 2)
+
+ggplot(aes(x= tenure ,y = friendships_initiated/tenure),data = subset(pf,tenure>=1))+
+  geom_smooth(aes(color= year_joined.bucket))
+ 
+
+
+
+yo <- read.csv('yogurt.csv')
+
+str(yo)
+
+yo$id <- factor(yo$id)
+
+ggplot(aes(x=price),data = yo)+
+  geom_histogram
+
+
+yo <- transform(yo,all.purchases = strawberry + blueberry 
+                +pina.colada
+                +plain
+                +mixed.berry)
+summary(yo$all.purchases)
+
+ggplot(aes(x=time,y= price),data = yo)+
+  geom_jitter(alpha = 1/4,shape = 21,color = 'orange')
+
+set.seed(42)
+
+sample.ids <- sample(levels(yo$id),16)
+
+ggplot(aes(x = time, y = price),
+       data = subset(yo, id %in% sample.ids))+
+       facet_wrap(~id)+
+       geom_line()+
+       geom_point(aes(size = all.purchases),pch = 1)
+
+install.packages("GGally")
+library("GGally")
+
+theme_set(theme_minimal(20))
+
+set.seed(1836)
+
+pf_subset <- pf[,c(2:15)]
+
+names(pf_subset)
+
+ggpairs(pf_subset[sample.int(nrows(pf_subset),1000),])
