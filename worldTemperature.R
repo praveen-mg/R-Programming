@@ -56,5 +56,6 @@ cities_India <- unique(subset(temperature_city, Country == 'India')$City)
 
 ggplot(aes(x = year, y = AverageTemperature),data = subset(temperature_city, City %in% cities_India),!is.na(AverageTemperature))+
   geom_line(aes(color = City),stat = 'summary', fun.y = mean)+
-  geom_line(data = subset(temperature_city,Country == 'India'),linetype = 2,stat = 'summary',fun.y = mean,linetype = 2)
+  geom_line(data = subset(temperature_city,Country == 'India'),linetype = 5,stat = 'summary',fun.y = mean,linetype = 2)
+  
 
