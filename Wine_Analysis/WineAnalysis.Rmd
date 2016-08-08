@@ -1,0 +1,162 @@
+---
+title: "WineAnalysis"
+author: "PraveenKumar"
+date: "August 3, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Wine Quality Analysis Based on its chemical content
+
+In this rmd file we will do detailed analysis on different chemical composition of 
+white wine and its effect on quality
+
+```{r echo=FALSE}
+library(ggplot2)
+library("GGally")
+```
+```{r echo = FALSE}
+wine <- read.csv('wineQualityWhites.csv',header = TRUE)
+dim(wine)
+```
+## Summary information on different variables 
+```{r echo=FALSE}
+
+summary(wine)
+```
+```{r echo=FALSE}
+
+str(wine)
+```
+
+## Univariant Data Analysis 
+
+#### Histogram Analysis
+```{r echo=FALSE, Plot_One}
+ggplot(aes(x = quality),data = wine)+
+  geom_histogram(binwidth = .5)+
+  scale_x_continuous(limits = c(0, 10), breaks =  seq(0, 10, 1))
+  
+
+
+
+#summary(wine$fixed.acidity) names(wine)
+
+
+
+```
+
+```{r echo = FALSE}
+ggplot(aes(x = fixed.acidity),data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = fixed.acidity),data = wine)+
+  geom_histogram(binwidth = .1)
+
+ggplot(aes(x = volatile.acidity),data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = volatile.acidity),data = wine)+
+  geom_histogram(binwidth = .01)
+
+ggplot(aes(x = citric.acid),data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = citric.acid),data = wine)+
+  geom_histogram(binwidth = .01)
+
+ggplot(aes(x = chlorides), data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = chlorides), data = wine)+
+  geom_histogram(binwidth = 0.001)
+
+ggplot(aes(x = chlorides), data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = chlorides), data = wine)+
+  geom_histogram(binwidth = .001)
+
+ggplot(aes(x = free.sulfur.dioxide), data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = free.sulfur.dioxide), data = wine)+
+  geom_histogram(binwidth = 2)
+
+
+ggplot(aes(x = pH), data = wine)+
+  geom_histogram()
+ggplot(aes(x = pH), data = wine)+
+  geom_histogram(binwidth = 0.01)
+
+ggplot(aes(x = sulphates), data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = sulphates), data = wine)+
+  geom_histogram(binwidth = 0.01)
+
+
+```
+
+```{r echo = FALSE}
+
+
+
+ggplot(aes(x = residual.sugar), data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = residual.sugar), data = wine)+
+  geom_histogram(binwidth = .1)
+
+```
+
+```{r echo = FALSE}
+ggplot(aes(x = density), data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = density), data = wine)+
+  geom_histogram(binwidth = 0.0005)
+
+```
+
+```{r echo = FALSE}
+#names(wine)
+#summary(wine$alcohol)
+
+ggplot(aes(x = alcohol), data = wine)+
+  geom_histogram()
+
+ggplot(aes(x = alcohol), data = wine)+
+  geom_histogram(binwidth = 0.05)
+
+
+```
+
+```{r echo=FALSE}
+
+ggplot(aes(x = X),data = wine)+
+  geom_histogram()+
+  scale_x_continuous()
+
+```
+
+#### BOXPLOT Analysis
+```{r echo = FALSE}
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
